@@ -1,3 +1,5 @@
+#ifndef PACIENTE_H
+#define PACIENTE_H
 
 #include "deps.h"
 
@@ -57,3 +59,4 @@ class PacienteCancer : public PacienteBase
 		string tipoCancer;
 };
 
+#endif

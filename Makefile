@@ -11,7 +11,8 @@ OBJDIR = obj
 SRCDIR = src
 
 OBJS = $(OBJDIR)/main.o\
-		$(OBJDIR)/paciente.o
+		$(OBJDIR)/paciente.o\
+		$(OBJDIR)/arvore.o
 
 EXEC = sistema-hospitalar
 

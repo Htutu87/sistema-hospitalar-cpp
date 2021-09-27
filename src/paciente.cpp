@@ -25,7 +25,7 @@ bool PacienteBase::getSexo(){
 
 
 // ---------------------
-// Paciente Diabtes
+// Paciente Diabetes
 
 PacienteDiabetes::PacienteDiabetes(string _nome, unsigned _idade,
  bool _sexo, double _glicemia) : PacienteBase(_nome, _idade, _sexo)

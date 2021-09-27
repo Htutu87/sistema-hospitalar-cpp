@@ -4,23 +4,20 @@
 // Exercício avaliado 04
 // Autor: Artur Amaral | DRE: 119057968 | Agosto 2021
 
-#include "../include/paciente.h"
+#include "../include/arvore.h"
 
 int main ()
 {
-	string a = "Artur";
-
-	PacienteDiabetes p1(a, 20, MASCULINO, 133.6);
+	PacienteDiabetes p1("Artur", 20, MASCULINO, 133.6);
 	PacienteHipertensao p2("Juliana", 30, FEMININO, 120.0);
 	PacienteCancer p3("Marcos", 23, MASCULINO, "Pulmao");
 	
-	//cout << p1;
-	//cout << p2;
-	//cout << p3;
+	Arvore <PacienteBase> arvore;
+	
+	arvore += &p3;
 
-	p1.mostrarDados();	
-	p2.mostrarDados();	
-	p3.mostrarDados();	
+	arvore.raiz.paciente->mostrarDados();
 
 	return 0;
+
 }
