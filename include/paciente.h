@@ -25,8 +25,9 @@ class PacienteDiabetes : public PacienteBase
 {
 	public:
 		PacienteDiabetes(string, unsigned, bool, double);
-		
-		void mostrarDados() {cout << "Diabetes." << endl;}
+		void mostrarDados();
+		friend ostream & operator<<(ostream &, PacienteDiabetes);
+		double getGlicemia();	
 
 	private:
 		double glicemia;
@@ -36,7 +37,9 @@ class PacienteHipertensao : public PacienteBase
 {
 	public:
 		PacienteHipertensao(string, unsigned, bool, double);
-		void mostrarDados() {cout << "Hipertensao." << endl;}
+		void mostrarDados();
+		friend ostream & operator<<(ostream &, PacienteHipertensao);
+		double getPressaoArterial();	
 
 	private:
 		double pressaoArterial;
@@ -46,7 +49,9 @@ class PacienteCancer : public PacienteBase
 {
 	public:
 		PacienteCancer(string, unsigned, bool, string);
-		void mostrarDados() {cout << "Cancer." << endl;}
+		void mostrarDados();
+		friend ostream & operator<<(ostream &, PacienteCancer);
+		string getTipoCancer();	
 
 	private:
 		string tipoCancer;

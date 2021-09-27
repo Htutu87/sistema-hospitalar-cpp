@@ -11,14 +11,16 @@ int main ()
 	string a = "Artur";
 
 	PacienteDiabetes p1(a, 20, MASCULINO, 133.6);
-	//PacienteHipertensao p2(a, 30, FEMININO, 120.0);
-	//PacienteCancer p3(a, 23, MASCULINO, "Pulmao");
+	PacienteHipertensao p2("Juliana", 30, FEMININO, 120.0);
+	PacienteCancer p3("Marcos", 23, MASCULINO, "Pulmao");
 	
-	cout << p1;
+	//cout << p1;
+	//cout << p2;
+	//cout << p3;
 
 	p1.mostrarDados();	
-	//p2.mostrarDados();	
-	//p3.mostrarDados();	
+	p2.mostrarDados();	
+	p3.mostrarDados();	
 
 	return 0;
 }
