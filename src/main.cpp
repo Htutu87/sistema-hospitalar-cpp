@@ -21,14 +21,17 @@ int main ()
 	
 	Arvore <PacienteBase> arvore;
 
-/*
-	arvore += &p1;
-	arvore += &p2;
 	arvore += &p3;
+	arvore += &p1;
+	arvore += &p9;
 	arvore += &p4;
 	arvore += &p5;
-*/
+	arvore += &p6;
+	arvore += &p7;
+	arvore += &p8;
+	//arvore += &p9;
 
+/*
 	node_t* noTmp;
 
 	arvore.raiz->paciente = &p1;
@@ -63,11 +66,15 @@ int main ()
 	noTmp->noDireita = new node();
 	noTmp->noDireita->paciente = &p9;
 
+*/
+
 	cout << arvore;
+
+
 
 	cout << "Teste operador '()'" << endl;
 
-	string nome = "Marcela";
+	string nome = "Rodrigo";
 
 	if (arvore(nome))
 		arvore(nome)->paciente->mostrarDados();

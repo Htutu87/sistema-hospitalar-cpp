@@ -8,9 +8,8 @@ Arvore<P>::Arvore(){
 
 
 template <class P>
-inline void Arvore<P>::listaNos(node_t* _n)
+inline void Arvore<P>::listaNos(node_t* _n, stack <node_t*> * _pilha)
 {
-	stack <node_t*> pilha;	
 	node_t * noTmp;
 	
 	if (raiz->paciente == NULL){
@@ -19,18 +18,17 @@ inline void Arvore<P>::listaNos(node_t* _n)
 	}
 
 	if (_n->paciente != NULL)
-		pilha.push(_n);
-
+		_pilha->push(_n);
 	if (_n->noDireita != NULL)
-		listaNos(_n->noDireita);
+		listaNos(_n->noDireita, _pilha);
 	if (_n->noEsquerda != NULL)
-		listaNos(_n->noEsquerda);
+		listaNos(_n->noEsquerda, _pilha);
 
-	while(!pilha.empty())
+	while(!_pilha->empty())
 	{
-		noTmp = pilha.top();
+		noTmp = _pilha->top();
 		noTmp->paciente->mostrarDados();
-		pilha.pop();
+		_pilha->pop();
 	}
 }
 
@@ -38,52 +36,95 @@ inline void Arvore<P>::listaNos(node_t* _n)
 
 ostream & operator<<(ostream & _cout, Arvore<PacienteBase> _a)
 {
-	_a.listaNos(_a.raiz);
+	stack <node_t*> pilha;	
+	_a.listaNos(_a.raiz, &pilha);
 	return _cout;
 }
 		
 template <class P>
-inline void Arvore<P>::operator+=(P *_p)
+void Arvore<P>::operator+=(P *_p)
 {		
 	bool registrado = false;
 	node_t * noTmp = raiz;
-
-	int i = 0;
-
-	cout << "u" << endl;i++;
-
-	if (raiz->paciente == NULL){
-		cout << "Paciente " << _p->getNome() << " registrado(a)." << endl;
-		raiz->paciente = _p;
+	
+/*
+	if (arvore(_p->getNome())){
+		cout << "Este nome ja existe na lista." << endl;
+		return;
 	}
+*/
+
+	if (raiz->paciente == NULL)
+	{
+		raiz->paciente = _p;
+		registrado = true;
+	}
+
+	noTmp = raiz;
+
+	while(!registrado)
+	{
+		if (noTmp->paciente->getNome() > _p->getNome())
+		{
+			if (noTmp->noEsquerda == NULL)
+			{
+				noTmp->noEsquerda = new node();
+				noTmp->noEsquerda->paciente = _p;
+				registrado = true;
+			} 
+			else
+			{	
+				noTmp = noTmp->noEsquerda;
+			}
+			
+		}
+
+		else if (noTmp->paciente->getNome() < _p->getNome())
+		{
+			if (noTmp->noDireita == NULL)
+			{
+				noTmp->noDireita = new node();
+				noTmp->noDireita->paciente = _p;
+				registrado = true;
+			} 
+			else
+			{	
+				noTmp = noTmp->noDireita;
+			}
+		}
+
+	}
+
+
+/*
 	else 
 	{
 		while(!registrado)
 		{
 			if (_p->getNome() > noTmp->paciente->getNome())
 			{
-				noTmp->noEsquerda = new node();
-				noTmp = noTmp->noEsquerda;
+				if (noTmp->noEsquerda == NULL)
+				{
+					noTmp->noEsquerda->paciente = _p;
+					registrado = true;
+				}
+				else
+					noTmp = noTmp->noEsquerda;	
 			}
 
 			else if (_p->getNome() < noTmp->paciente->getNome())
 			{
-				noTmp->noDireita = new node();
-				noTmp = noTmp->noDireita;
-			}
-			
-			else {
-				cout << "Este nome ja existe." << endl;
-				registrado = true;
-			}			
-
-			if (noTmp->paciente == NULL)
-			{
-				noTmp->paciente = _p;
-				registrado = true;
+				if (noTmp->noDireita == NULL)
+				{
+					noTmp->noDireita->paciente = _p;
+					registrado = true;
+				}
+				else
+					noTmp = noTmp->noDireita;	
 			}
 		}
 	}
+*/
 }
 
 		
