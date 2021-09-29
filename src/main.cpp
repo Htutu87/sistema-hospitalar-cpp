@@ -14,38 +14,59 @@ int main ()
 	PacienteCancer p3("Marcos", 23, MASCULINO, "Pulmao");
 	PacienteCancer p4("Jorge", 23, MASCULINO, "Pulmao");
 	PacienteCancer p5("Jose", 23, MASCULINO, "Pulmao");
+	PacienteHipertensao p6("Marcelo", 30, FEMININO, 120.0);
+	PacienteDiabetes p7("Claudia", 20, MASCULINO, 133.6);
+	PacienteCancer p8("Luis", 23, MASCULINO, "Pulmao");
+	PacienteCancer p9("Rodrigo", 23, MASCULINO, "Pulmao");
 	
 	Arvore <PacienteBase> arvore;
 
+/*
 	arvore += &p1;
 	arvore += &p2;
 	arvore += &p3;
 	arvore += &p4;
 	arvore += &p5;
+*/
 
-	cout << (p1.getNome() < p2.getNome()) << endl;
+	node_t* noTmp;
 
-	/* Alocação dinâmica de uma estrutura
-	node_t* n = new node();
-	cout << n->paciente << endl;
-	cout << n->noDireita << endl;
-	cout << n->noEsquerda << endl; */
+	arvore.raiz->paciente = &p1;
 
-	/* Essa alocação funfa
-	arvore.raiz.noDireita = new node();	
-	arvore.raiz.noEsquerda = new node();	
-
-	arvore.raiz.noDireita->paciente = &p1;
-	arvore.raiz.noEsquerda->paciente = &p3;
-	*/
-
-	//cout << arvore;
+	arvore.raiz->noEsquerda = new node();
+	arvore.raiz->noEsquerda->paciente = &p2;	
 	
-/*	
-	arvore += &p1;
-	arvore += &p2;
-	arvore += &p3;
-*/	
+	arvore.raiz->noDireita = new node();
+	arvore.raiz->noDireita->paciente = &p3;
+
+	noTmp = arvore.raiz->noDireita;
+
+	noTmp->noEsquerda = new node();
+	noTmp->noEsquerda->paciente = &p4;	
+	
+	noTmp->noDireita = new node();
+	noTmp->noDireita->paciente = &p5;
+
+	noTmp = arvore.raiz->noEsquerda;
+
+	noTmp->noEsquerda = new node();
+	noTmp->noEsquerda->paciente = &p6;	
+	
+	noTmp->noDireita = new node();
+	noTmp->noDireita->paciente = &p7;
+
+	noTmp = noTmp->noEsquerda;
+
+	noTmp->noEsquerda = new node();
+	noTmp->noEsquerda->paciente = &p8;	
+	
+	noTmp->noDireita = new node();
+	noTmp->noDireita->paciente = &p9;
+
+
+	cout << arvore;
+
+
 	return 0;
 
 }
