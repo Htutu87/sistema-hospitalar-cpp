@@ -34,7 +34,7 @@ class Arvore {
 		void listaNos(node_t*);
 		friend ostream & operator<<(ostream &, Arvore<PacienteBase>);
 		void operator+=(P*);
-		void operator()(string);
+		node_t* operator()(string);
 };
 
 #endif

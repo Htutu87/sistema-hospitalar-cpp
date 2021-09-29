@@ -63,9 +63,16 @@ int main ()
 	noTmp->noDireita = new node();
 	noTmp->noDireita->paciente = &p9;
 
-
 	cout << arvore;
 
+	cout << "Teste operador '()'" << endl;
+
+	string nome = "Marcela";
+
+	if (arvore(nome))
+		arvore(nome)->paciente->mostrarDados();
+	else
+		cout << "Nome nao registrado" << endl;
 
 	return 0;
 

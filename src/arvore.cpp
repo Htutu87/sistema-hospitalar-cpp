@@ -10,9 +10,6 @@ Arvore<P>::Arvore(){
 template <class P>
 inline void Arvore<P>::listaNos(node_t* _n)
 {
-	static int c = 0;
-	c++;
-	
 	stack <node_t*> pilha;	
 	node_t * noTmp;
 	
@@ -91,8 +88,30 @@ inline void Arvore<P>::operator+=(P *_p)
 
 		
 template <class P>
-inline void Arvore<P>::operator()(string) {};
+node_t* Arvore<P>::operator()(string _nome)
+{
+	stack <node_t*> pilha;
+	node_t * noTmp;
 
+	noTmp = raiz;
+	pilha.push(noTmp);
+
+	while(!pilha.empty())
+	{
+		noTmp = pilha.top();
+		pilha.pop();
+		
+		if (noTmp->paciente->getNome() == _nome)
+			return noTmp;
+
+		if(noTmp->noDireita != NULL)
+			pilha.push(noTmp->noDireita);
+		if(noTmp->noEsquerda != NULL)
+			pilha.push(noTmp->noEsquerda);	
+	}
+
+	return NULL;
+}
 
 template class Arvore<PacienteBase>;
 
