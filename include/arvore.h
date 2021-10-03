@@ -3,6 +3,7 @@
 #define ARVORE_H
 
 #include "paciente.h"
+#include "exceptions.h"
 
 typedef struct node node_t;
 template <class P> class Arvore;

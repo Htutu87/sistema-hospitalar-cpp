@@ -32,8 +32,6 @@ inline void Arvore<P>::listaNos(node_t* _n, stack <node_t*> * _pilha)
 	}
 }
 
-
-
 ostream & operator<<(ostream & _cout, Arvore<PacienteBase> _a)
 {
 	stack <node_t*> pilha;	
@@ -46,7 +44,7 @@ void Arvore<P>::operator+=(P *_p)
 {		
 	bool registrado = false;
 	node_t * noTmp = raiz;
-	
+
 /*
 	if (arvore(_p->getNome())){
 		cout << "Este nome ja existe na lista." << endl;
@@ -92,39 +90,7 @@ void Arvore<P>::operator+=(P *_p)
 				noTmp = noTmp->noDireita;
 			}
 		}
-
 	}
-
-
-/*
-	else 
-	{
-		while(!registrado)
-		{
-			if (_p->getNome() > noTmp->paciente->getNome())
-			{
-				if (noTmp->noEsquerda == NULL)
-				{
-					noTmp->noEsquerda->paciente = _p;
-					registrado = true;
-				}
-				else
-					noTmp = noTmp->noEsquerda;	
-			}
-
-			else if (_p->getNome() < noTmp->paciente->getNome())
-			{
-				if (noTmp->noDireita == NULL)
-				{
-					noTmp->noDireita->paciente = _p;
-					registrado = true;
-				}
-				else
-					noTmp = noTmp->noDireita;	
-			}
-		}
-	}
-*/
 }
 
 		
@@ -150,6 +116,8 @@ node_t* Arvore<P>::operator()(string _nome)
 		if(noTmp->noEsquerda != NULL)
 			pilha.push(noTmp->noEsquerda);	
 	}
+
+	throw PacienteNaoExiste();
 
 	return NULL;
 }

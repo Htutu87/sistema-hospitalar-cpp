@@ -70,17 +70,23 @@ int main ()
 
 	cout << arvore;
 
-
+//------------------------------------------------
+// Teste Operador ()
 
 	cout << "Teste operador '()'" << endl;
 
-	string nome = "Rodrigo";
+	string nome = "Luisa";
+	node_t * n;
 
-	if (arvore(nome))
-		arvore(nome)->paciente->mostrarDados();
-	else
-		cout << "Nome nao registrado" << endl;
+	try{
+		n = arvore(nome);
+		n->paciente->mostrarDados();
+	}
+	catch(exception& p)
+	{
+		cout << "Excecao disparada! \nwhat(): ";
+		cout << p.what() << endl;
+	}
 
 	return 0;
-
 }

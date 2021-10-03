@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <exception>
 
 using namespace std;
 
