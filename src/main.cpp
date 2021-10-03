@@ -4,7 +4,7 @@
 // Exercício avaliado 04
 // Autor: Artur Amaral | DRE: 119057968 | Agosto 2021
 
-#include "../include/arvore.h"
+#include "../include/cadastro.h"
 
 int main ()
 {
@@ -19,30 +19,30 @@ int main ()
 	PacienteCancer p8("Luis", 23, MASCULINO, "Pulmao");
 	PacienteCancer p9("Rodrigo", 23, MASCULINO, "Pulmao");
 	
-	Arvore <PacienteBase> arvore;
+	Cadastro cadastro;//Arvore <PacienteBase> cadastro.getArvore();
 
-	arvore += &p3;
-	arvore += &p1;
-	arvore += &p9;
-	arvore += &p4;
-	arvore += &p5;
-	arvore += &p6;
-	arvore += &p7;
-	arvore += &p8;
-	//arvore += &p9;
+	cadastro.getArvore() += &p3;
+	cadastro.getArvore() += &p1;
+	cadastro.getArvore() += &p9;
+	cadastro.getArvore() += &p4;
+	cadastro.getArvore() += &p5;
+	cadastro.getArvore() += &p6;
+	cadastro.getArvore() += &p7;
+	cadastro.getArvore() += &p8;
+	//cadastro.getArvore() += &p9;
 
 /*
 	node_t* noTmp;
 
-	arvore.raiz->paciente = &p1;
+	cadastro.getArvore().raiz->paciente = &p1;
 
-	arvore.raiz->noEsquerda = new node();
-	arvore.raiz->noEsquerda->paciente = &p2;	
+	cadastro.getArvore().raiz->noEsquerda = new node();
+	cadastro.getArvore().raiz->noEsquerda->paciente = &p2;	
 	
-	arvore.raiz->noDireita = new node();
-	arvore.raiz->noDireita->paciente = &p3;
+	cadastro.getArvore().raiz->noDireita = new node();
+	cadastro.getArvore().raiz->noDireita->paciente = &p3;
 
-	noTmp = arvore.raiz->noDireita;
+	noTmp = cadastro.getArvore().raiz->noDireita;
 
 	noTmp->noEsquerda = new node();
 	noTmp->noEsquerda->paciente = &p4;	
@@ -50,7 +50,7 @@ int main ()
 	noTmp->noDireita = new node();
 	noTmp->noDireita->paciente = &p5;
 
-	noTmp = arvore.raiz->noEsquerda;
+	noTmp = cadastro.getArvore().raiz->noEsquerda;
 
 	noTmp->noEsquerda = new node();
 	noTmp->noEsquerda->paciente = &p6;	
@@ -68,7 +68,7 @@ int main ()
 
 */
 
-	cout << arvore;
+	cout << cadastro.getArvore();
 
 //------------------------------------------------
 // Teste Operador ()
@@ -79,7 +79,7 @@ int main ()
 	node_t * n;
 
 	try{
-		n = arvore(nome);
+		n = cadastro.getArvore()(nome);
 		n->paciente->mostrarDados();
 	}
 	catch(exception& p)
