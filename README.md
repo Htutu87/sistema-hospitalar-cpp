@@ -1,72 +1,37 @@
+// Universidade Federal do Rio de Janeiro
+// EEL670 - Linguagens de Programção
+// Prof.: Miguel Campista
+// Exercício avaliado 04
+// Autor: Artur Amaral | DRE: 119057968 | Agosto 2021
+-----------------------------------------------------
 
----------------------------------
-| classe Cadastro 				|	
----------------------------------
-								
-Classes:						
------------						
-								
-- Cadastro						
-- Arvore (classe template)		
-- PacienteBase					
-	|_>Paciente					
-								
-Obs.:							
-* Cadastro "tem uma" Árvore		
-	 (Composição de classes).	
-* Árvore "tem um" paciente.		
-* Paciente é um PacienteBase 	
-	(Herança).					
----------------------------------
+-- Descrição do programa --
 
-Operadores:
-------------
+	O presente programa consiste em um sistema de gerenciamento hospitalar em C++, que armazena os
+dados dos pacientes em uma classe 'Cadastro', cuja estrutura de armazenamento de dados é uma árvore
+binária. Esta árvore, por sua vez, é implementada como uma classe template, e instanciada no cadastro
+como uma árvore da classe 'PacienteBase'.
+	Como os objetos de pacientes podem apresentar diferentes conjuntos de atributos, utilizou-se a
+técnica de herança, de forma que há três derivações da 'PacienteBase', que representam pacientes com
+as doenças diabetes, hipertensão e câncer. 
+	Já que a árvore que armazena os objetos paciente é um template instanciado com a base, sua 
+implementação leva em conta que receberá ponteiros para as classes derivadas, dessa forma exibindo
+um comportamento polimórfico.
 
-- Inserção de pacientes:
-	- arvore += paciente
-	- implementado na classe
-template arvore.
-	- Retorna ponteiro para o nó
-inserido ou NULL na falha.
-	- Não é permitido inserir dois
-pacientes com o mesmo nome.
+	Por simplicidade (e um tanto de falta de tempo), não implementei um menu de interação com usuário.
+A main deste programa basicamente executa as três funcionalidades básicas do cadastro (adicionar,
+imprimir e buscar), e possui um mínimo de interação, quando necessário. Espero que esta main seja 
+suficiente para comprovar o funcionamento das classes, da sobrecarga dos operadores, dos algoritmos
+da árvore, das exceções, etc.
 
-- Busca de paciente por nome:
-	- arvore("nome")
-	- Retorna um ponteiro para o
-elemento encontrado ou NULL na 
+-- Compilando e executando --
 
-- Imprimir arvore:
-	- método imprime();
-	- sobrecarga do operador <<
-	- cout << arvore;
-	- cout << paciente;
+Baixe o diretório do projeto na sua máquina. Através da linha de comando,
+navegue até este diretório. Nele há um makefile para compilação dos códigos.
 
-Herança
---------
-
-PacienteBase
-	- nome
-	- idade
-	- sexo
-	- operator << (PURAMENTE VIRTUAL)
-	OBS: NÃO TEM COMO, tem que ser global (cout é o lvalue) 
-
-PacienteDiabetes
-	- double glicemia;
-
-PacienteHipertensao
-	- double pressaoArterial;
-
-PacienteCancer
-	- string tipoCancer;
-
-Exceção
---------
-
-Busca e inserção podem retornar NULL, o que indica
-uma exceção a ser tratada na main. Quando forem
-pegas, usarão o método what da classe abstrata exception(); 
-	
-
+- Para gerar o executável digite no shell:
+	- "make" ou "make sistema-hospitalar"
+- Para deletar o executável e seus arquivos objeto digite no shell:
+	- "make clean"
+- O executavel é o arquivo "sistema-hospitalar"
 

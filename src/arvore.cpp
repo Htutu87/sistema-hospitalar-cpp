@@ -1,3 +1,8 @@
+// Universidade Federal do Rio de Janeiro
+// EEL670 - Linguagens de Programção
+// Prof.: Miguel Campista
+// Exercício avaliado 04
+// Autor: Artur Amaral | DRE: 119057968 | Agosto 2021
 
 #include "../include/arvore.h"
 
@@ -45,17 +50,12 @@ void Arvore<P>::operator+=(P *_p)
 	bool registrado = false;
 	node_t * noTmp = raiz;
 
-/*
-	if (arvore(_p->getNome())){
-		cout << "Este nome ja existe na lista." << endl;
-		return;
-	}
-*/
-
 	if (raiz->paciente == NULL)
 	{
 		raiz->paciente = _p;
 		registrado = true;
+		cout << "Paciente " << _p->getNome()
+			<< " registrado com sucesso!" << endl;
 	}
 
 	noTmp = raiz;
@@ -69,6 +69,8 @@ void Arvore<P>::operator+=(P *_p)
 				noTmp->noEsquerda = new node();
 				noTmp->noEsquerda->paciente = _p;
 				registrado = true;
+				cout << "Paciente " << _p->getNome()
+					<< " registrado com sucesso!" << endl;
 			} 
 			else
 			{	
@@ -84,11 +86,17 @@ void Arvore<P>::operator+=(P *_p)
 				noTmp->noDireita = new node();
 				noTmp->noDireita->paciente = _p;
 				registrado = true;
+				cout << "Paciente " << _p->getNome()
+					<< " registrado com sucesso!" << endl;
 			} 
 			else
 			{	
 				noTmp = noTmp->noDireita;
 			}
+		}
+		else
+		{
+			throw PacienteJaExiste();
 		}
 	}
 }

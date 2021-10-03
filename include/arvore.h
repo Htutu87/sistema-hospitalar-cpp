@@ -1,3 +1,8 @@
+// Universidade Federal do Rio de Janeiro
+// EEL670 - Linguagens de Programção
+// Prof.: Miguel Campista
+// Exercício avaliado 04
+// Autor: Artur Amaral | DRE: 119057968 | Agosto 2021
 
 #ifndef ARVORE_H
 #define ARVORE_H
